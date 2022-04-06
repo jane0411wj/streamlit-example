@@ -26,7 +26,7 @@ if file:
 
 if file:
     json_file = pd.read_json(file.name, orient = 'records')
-    st.write (json_file)
+    st.write (json_file.head(10))
 
 
 
