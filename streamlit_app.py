@@ -3,6 +3,7 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import json
 
 """
 # Welcome to Streamlit!
@@ -14,7 +15,18 @@ forums](https://discuss.streamlit.io).
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
-st.write ("let us start") 
+
+file = st.file_uploader("please upload your file for analysis")
+if file:
+    stringio = file.getvalue()
+    file_path = file.name
+    with open(file_path , "wb" ) as f:
+         f.write(stringio)
+
+json_file = pd.read_json(file.name, orient = 'records')
+st.write (json_file)
+
+
 
 with st.echo(code_location='below'):
     total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
