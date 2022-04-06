@@ -23,8 +23,11 @@ if file:
     with open(file_path , "wb" ) as f:
          f.write(stringio)
 
-json_file = pd.read_json(file.name, orient = 'records')
-st.write (json_file)
+
+if file:
+    json_file = pd.read_json(file.name, orient = 'records')
+    st.write (json_file)
+
 
 
 
